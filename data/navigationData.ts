@@ -6,7 +6,7 @@ export const navigationData: NavItem[] = [
     path: '/' 
   },
   { 
-    label: 'Services', // Saya ganti jadi plural 'Services' biar lebih umum
+    label: 'Services',
     path: '/services',
     children: [
       
