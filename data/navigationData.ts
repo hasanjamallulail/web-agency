@@ -6,26 +6,21 @@ export const navigationData: NavItem[] = [
     path: '/' 
   },
   { 
-    label: 'Service', 
+    label: 'Services', // Saya ganti jadi plural 'Services' biar lebih umum
     path: '/services',
     children: [
-      { label: 'All Services', path: '/services' },
-      { label: 'SEO', path: '/services/seo' },
-      { label: 'Ads', path: '/services/ads' },
+      
+      { label: 'SEO Optimization', path: '/services/seo' },
+      { label: 'Google Ads', path: '/services/ads' },
       { label: 'Marketplace', path: '/services/marketplace' },
-      { label: 'Web App', path: '/services/web-app' },
-      { label: 'Sosial Media Management', path: '/services/social-media' },
+      { label: 'Web App Dev', path: '/services/web-app' },
+      { label: 'Social Media Mgmt', path: '/services/social-media' },
       { label: 'UI/UX Design', path: '/services/ui-ux' }
     ]
   },
-  // Specific links asked to be on Top Navbar
-  { label: 'SEO', path: '/services/seo' },
-  { label: 'Ads', path: '/services/ads' },
-  { label: 'Marketplace', path: '/services/marketplace' },
-  { label: 'Web App', path: '/services/web-app' },
-  { label: 'Sosial Media Management', path: '/services/social-media' },
+  
   { 
-    label: 'Our Project', 
+    label: 'Our Projects', 
     path: '/projects' 
   },
   { 
