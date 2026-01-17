@@ -1,0 +1,7 @@
+{
+  "name": "Wargrowth Agency",
+  "description": "A UI/UX and Growth Agency website based on NLP principles, featuring analytics integration and an AI consultant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

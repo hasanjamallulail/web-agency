@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wargrowth Agency - Growth & UI/UX</title>
+    
+    <!-- ERROR TRAP: Displays errors on screen instead of white screen -->
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        console.error("Critical Error:", message, error);
+        const root = document.getElementById('root');
+        if (root) {
+           root.innerHTML = '<div style="color:#ef4444; background:#0f172a; padding:20px; height:100vh; font-family:monospace; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">' +
+           '<h2 style="font-size:24px; font-weight:bold; margin-bottom:16px;">Something went wrong</h2>' +
+           '<p style="margin-bottom:8px; color:#cbd5e1; max-width:600px;">' + message + '</p>' +
+           '<p style="color:#64748b; font-size:12px; margin-top:16px;">Check console for details.</p>' +
+           '</div>';
+        }
+      };
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Global Styles -->
+    <link rel="stylesheet" href="styles/global.css">
+
+    <!-- Google Tag Manager -->
+    <script src="scripts/gtm.js"></script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Polyfill for process.env -->
+    <script>
+      window.process = window.process || { env: { API_KEY: '' } };
+    </script>
+
+    <!-- Critical: Import Map standardized to React 19 (RC) -->
+    <!-- FIX: Cleaned up dependencies to prevent version mismatch crash -->
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0-rc-65e2784-20241218",
+    "react/": "https://esm.sh/react@19.0.0-rc-65e2784-20241218/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0-rc-65e2784-20241218?deps=react@19.0.0-rc-65e2784-20241218",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0-rc-65e2784-20241218/client?deps=react@19.0.0-rc-65e2784-20241218",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@19.0.0-rc-65e2784-20241218,react-dom@19.0.0-rc-65e2784-20241218",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@19.0.0-rc-65e2784-20241218",
+    "@google/genai": "https://esm.sh/@google/genai@0.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-950 text-slate-200 antialiased selection:bg-blue-500 selection:text-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TX27BZMP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>

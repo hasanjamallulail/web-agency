@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wargrowth.com/sitemap.xml
