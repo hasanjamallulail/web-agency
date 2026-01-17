@@ -1,25 +1,16 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import App from './App';
+import "./styles/global.css";
 
-console.log("System: Starting React App Mount...");
+// 1. Import Provider SEO
+import { HelmetProvider } from 'react-helmet-async';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  console.error("System Error: Root element not found");
-  throw new Error("Could not find root element to mount to");
-}
-
-try {
-  const root = createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    {/* 2. Bungkus App dengan HelmetProvider */}
+    <HelmetProvider>
       <App />
-    </React.StrictMode>
-  );
-  console.log("System: React App Render Initiated.");
-} catch (error) {
-  console.error("System Critical: React failed to mount.", error);
-  // Manual fallback if React fails completely
-  rootElement.innerHTML = `<div style="padding: 20px; color: red;"><h1>Failed to Start App</h1><p>${error instanceof Error ? error.message : String(error)}</p></div>`;
-}
+    </HelmetProvider>
+  </React.StrictMode>,
+);

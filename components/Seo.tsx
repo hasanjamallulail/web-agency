@@ -1,13 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
-import { 
-  updateMetaTag, 
-  updateLinkTag, 
-  injectJsonLd, 
-  updateRobotsMeta,
-  SITE_NAME, 
-  DEFAULT_OG_IMAGE 
-} from '../utils/seo';
 
 interface SeoProps {
   title: string;
@@ -16,7 +9,7 @@ interface SeoProps {
   type?: 'website' | 'article';
   image?: string;
   schema?: Record<string, any>; // JSON-LD Structured Data
-  robots?: string; // e.g., 'index, follow' or 'noindex, nofollow'
+  robots?: string;
 }
 
 const Seo: React.FC<SeoProps> = ({ 
@@ -24,57 +17,45 @@ const Seo: React.FC<SeoProps> = ({
   description, 
   canonical, 
   type = 'website',
-  image = DEFAULT_OG_IMAGE,
+  image = 'https://wargrowth.vercel.app/assets/og-image.jpg', // Ganti default image Anda
   schema,
   robots = 'index, follow'
 }) => {
   const location = useLocation();
+  // Ambil URL otomatis jika canonical tidak diisi manual
+  const siteUrl = 'https://wargrowth.vercel.app'; 
+  const currentUrl = canonical || `${siteUrl}${location.pathname}`;
 
-  useEffect(() => {
-    const fullTitle = `${title} | ${SITE_NAME}`;
-    
-    // Canonical Logic:
-    // 1. Use provided canonical if available
-    // 2. Otherwise use current URL (Origin + Pathname). 
-    // IMPORTANT: omitting location.search strips query params (tracking, filters) 
-    // which prevents duplicate content issues.
-    // In production, ensure window.location.origin is the HTTPS domain.
-    const currentUrl = canonical || `${window.location.origin}${location.pathname}`;
+  return (
+    <Helmet>
+      {/* 1. Standard Tags */}
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="robots" content={robots} />
+      <link rel="canonical" href={currentUrl} />
 
-    // 1. Update Document Title
-    document.title = fullTitle;
+      {/* 2. Open Graph (Facebook/LinkedIn/WhatsApp) */}
+      <meta property="og:site_name" content="WarGrowth Agency" />
+      <meta property="og:title" content={`${title} | WarGrowth Agency`} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={currentUrl} />
+      <meta property="og:image" content={image} />
 
-    // 2. Robots Meta Tag (Index/NoIndex)
-    updateRobotsMeta(robots);
+      {/* 3. Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={`${title} | WarGrowth Agency`} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
 
-    // 3. Standard Meta Tags
-    updateMetaTag('description', description);
-
-    // 4. Open Graph (Facebook/LinkedIn)
-    updateMetaTag('og:site_name', SITE_NAME, 'property');
-    updateMetaTag('og:title', fullTitle, 'property');
-    updateMetaTag('og:description', description, 'property');
-    updateMetaTag('og:type', type, 'property');
-    updateMetaTag('og:url', currentUrl, 'property');
-    updateMetaTag('og:image', image, 'property');
-
-    // 5. Twitter Card
-    updateMetaTag('twitter:card', 'summary_large_image', 'name');
-    updateMetaTag('twitter:title', fullTitle, 'name');
-    updateMetaTag('twitter:description', description, 'name');
-    updateMetaTag('twitter:image', image, 'name');
-
-    // 6. Canonical Link
-    updateLinkTag('canonical', currentUrl);
-
-    // 7. Structured Data (JSON-LD)
-    if (schema) {
-      injectJsonLd(schema);
-    }
-
-  }, [title, description, canonical, type, image, schema, robots, location.pathname]);
-
-  return null;
+      {/* 4. Structured Data (JSON-LD) - Fitur Canggih Google */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
+    </Helmet>
+  );
 };
 
 export default Seo;

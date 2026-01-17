@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -9,6 +10,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import Privacy from './pages/Privacy';
+import Sitemap from './pages/Sitemap';
 import { initAnalytics } from './utils/analytics';
 
 const ScrollToTop = () => {
@@ -21,13 +23,22 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Initialize Meta Pixel, GTM, GA4
     initAnalytics();
   }, []);
 
   return (
     <Router>
+      {/* 2. GLOBAL SEO SETTING */}
+      {/* Ini akan membuat judul halaman otomatis: "Nama Halaman | WarGrowth" */}
+      <Helmet 
+        titleTemplate="%s | WarGrowth Agency" 
+        defaultTitle="WarGrowth Agency - Jasa Website & Digital Marketing"
+      >
+         <meta name="description" content="Agency digital marketing dan pembuatan website terpercaya untuk UMKM dan perusahaan." />
+      </Helmet>
+
       <ScrollToTop />
+      
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -38,7 +49,7 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="*" element={<Home />} />
+          <Route path="/sitemap" element={<Sitemap />} />
         </Route>
       </Routes>
     </Router>
