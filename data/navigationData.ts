@@ -27,10 +27,6 @@ export const navigationData: NavItem[] = [
     label: 'About', 
     path: '/about' 
   },
-  {
-    label: 'Testimonial',
-    path: '/#testimonials'
-  },
   { 
     label: 'Contact', 
     path: '/contact' 
