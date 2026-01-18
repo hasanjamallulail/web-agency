@@ -14,12 +14,12 @@ const MediaSection: React.FC = () => {
     "cnn.png" 
   ];
 
-  // Mapping path sama persis seperti di ClientsSection
-  // Pastikan folder di komputer Anda bernama "feature" (bukan features/partners)
-  const mediaItems = mediaFiles.map(file => `/assets/features/${file}`);
+  // Gunakan /assets/feature/ jika folder kamu bernama 'feature'
+  // Gunakan /assets/features/ jika folder kamu bernama 'features'
+const mediaItems = mediaFiles.map(file => `/assets/features/${file}`);
 
   return (
-    <div className="bg-slate-950 border-t border-slate-900">
+    <div className="bg-slate-950 border-t border-slate-900 py-10">
         <LogoTicker 
           title="Featured In" 
           items={mediaItems} 

@@ -33,10 +33,6 @@ const LogoTicker: React.FC<LogoTickerProps> = ({
       
       {title && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          {/* PERUBAHAN DISINI: */}
-          {/* 1. text-lg: Ukuran huruf lebih besar (sebelumnya text-sm) */}
-          {/* 2. text-white: Warna jadi putih terang */}
-          {/* 3. font-bold: Lebih tebal */}
           <h3 className="text-center text-lg font-bold text-white uppercase tracking-[0.2em]">
             {title}
           </h3>
