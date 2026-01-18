@@ -12,6 +12,7 @@ import ClientsSection from '../components/sections/ClientsSection';
 import MediaSection from '../components/sections/MediaSection';
 import CtaSection from '../components/sections/CtaSection';
 import Seo from '../components/Seo';
+import PengalamanSection from '../components/sections/PengalamanSection';
 
 const Home: React.FC = () => {
   // Schema.org for Local Business / Agency
@@ -55,6 +56,8 @@ const Home: React.FC = () => {
         schema={homeSchema}
       />
       <Hero />
+      <PengalamanSection />
+
       <CertifiedSection />
       <GrowthFramework />
       <ServicesSection />

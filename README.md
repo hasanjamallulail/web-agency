@@ -10,11 +10,29 @@ View your app in AI Studio: https://ai.studio/apps/drive/1pSKcSG76dryTZZ91zoK2t5
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisites:**
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+WEB-AGENCY/
+├── public/ # File statis yang diakses langsung (browser)
+│ └── assets/
+│ ├── clients/ # Logo klien (Hyundai, Keke, dsb)
+│ └── features/ # Logo media/liputan (CNN, Kompas, dsb)
+├── src/ # Source code utama aplikasi
+│ ├── components/ # Komponen Reusable
+│ │ ├── cards/ # Komponen kartu (ServiceCard, dsb)
+│ │ ├── sections/ # Blok besar halaman (Hero, ClientsSection, dsb)
+│ │ ├── service-partials/ # Konten spesifik tiap layanan (SeoContent, AdsContent)
+│ │ └── ui/ # Komponen UI atomik (Button, Section)
+│ ├── data/ # File konfigurasi data statis (JSON/Array)
+│ ├── pages/ # Komponen Halaman (Routes utama)
+│ ├── scripts/ # Script eksternal (GTM, Analytics)
+│ ├── services/ # Logika bisnis & Data Fetching (Repository)
+│ ├── styles/ # Pengaturan CSS Global & Tailwind
+│ ├── utils/ # Fungsi helper & utilitas
+│ ├── App.tsx # Entry point utama aplikasi & Routing
+│ ├── constants.ts # Variabel konstan global (Link WA, dsb)
+│ ├── types.ts # Definisi Interface & Type TypeScript
+│ └── main.tsx # Inisialisasi React ke DOM
+├── package.json # Daftar dependencies & script proyek
+├── tsconfig.json # Konfigurasi TypeScript
+└── vite.config.ts # Konfigurasi Build Tool Vite

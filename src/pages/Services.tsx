@@ -4,6 +4,7 @@ import ServiceCard from '../components/cards/ServiceCard';
 import Section from '../components/ui/Section';
 import { ServiceService } from '../services/Repository';
 import Seo from '../components/Seo';
+import CtaSection from '../components/sections/CtaSection';
 
 const getIcon = (slug: string) => {
   switch(slug) {
@@ -35,7 +36,9 @@ const Services: React.FC = () => {
             />
           ))}
         </div>
+
       </Section>
+      <CtaSection/>
     </>
   );
 };
