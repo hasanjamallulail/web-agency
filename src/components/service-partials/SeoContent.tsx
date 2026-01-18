@@ -1,22 +1,22 @@
 import React from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
-import { getWhatsAppUrl, WA_MESSAGES } from '../../constants';
+import { getWhatsAppUrl, WA_MESSAGES } from '../../../constants';
 
-export const WebAppMeta = {
-  title: 'Web App Development',
-  subtitle: 'Scalable & Secure Solutions'
+export const SeoMeta = {
+  title: 'SEO Optimization',
+  subtitle: 'Dominate Search Results'
 };
 
-const WebAppContent: React.FC = () => {
-  const features = ['Custom UI/UX Design', 'Frontend & Backend Dev', 'PWA Implementation', 'Database Architecture', 'API Integration'];
+const SeoContent: React.FC = () => {
+  const features = ['Technical SEO Audit', 'Keyword & Competitor Research', 'On-Page Optimization', 'High-Quality Backlinking', 'Content Strategy'];
 
   return (
     <div className="grid md:grid-cols-2 gap-16 items-center">
        <div>
-          <h2 className="text-3xl font-bold text-white mb-6">Why Choose Our {WebAppMeta.title}?</h2>
+          <h2 className="text-3xl font-bold text-white mb-6">Why Choose Our {SeoMeta.title}?</h2>
           <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-            Custom web applications built with modern technologies like React and Next.js. We prioritize speed, security, and SEO-friendliness to ensure your digital product scales with your business.
+            Our NLP-based SEO strategy goes beyond keywords. We analyze search intent to create content that ranks and converts. We ensure your technical foundation is solid while building semantic authority.
           </p>
           <ul className="space-y-4">
              {features.map((feature, idx) => (
@@ -28,23 +28,23 @@ const WebAppContent: React.FC = () => {
           </ul>
           <div className="mt-10">
              <Button 
-               href={getWhatsAppUrl(WA_MESSAGES.WEB_APP)}
+               href={getWhatsAppUrl(WA_MESSAGES.SEO)}
                target="_blank"
                rel="noreferrer"
                variant="primary"
                trackName="InitiateCheckout"
-               trackParams={{ location: 'ServiceDetail', service: WebAppMeta.title }}
+               trackParams={{ location: 'ServiceDetail', service: SeoMeta.title }}
              >
-                Build My App <ArrowRight size={20} className="ml-2" />
+                Consult Now <ArrowRight size={20} className="ml-2" />
              </Button>
           </div>
        </div>
        <div className="bg-slate-900 border border-slate-800 rounded-3xl h-96 flex items-center justify-center shadow-xl relative overflow-hidden group">
-           <div className="absolute inset-0 bg-cyan-600/5 group-hover:bg-cyan-600/10 transition-colors"></div>
-          <span className="text-slate-500 text-lg font-medium">Code Architecture</span>
+          <div className="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors"></div>
+          <span className="text-slate-500 text-lg font-medium">SEO Architecture Visualization</span>
        </div>
     </div>
   );
 };
 
-export default WebAppContent;
+export default SeoContent;

@@ -1,22 +1,22 @@
 import React from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
-import { getWhatsAppUrl, WA_MESSAGES } from '../../constants';
+import { getWhatsAppUrl, WA_MESSAGES } from '../../../constants';
 
-export const AdsMeta = {
-  title: 'Performance Ads',
-  subtitle: 'High ROI Campaigns'
+export const UiUxMeta = {
+  title: 'UI/UX Design',
+  subtitle: 'Psychology-Driven Interfaces'
 };
 
-const AdsContent: React.FC = () => {
-  const features = ['Facebook & Instagram Ads', 'Google Search & Display', 'TikTok Ads Strategy', 'A/B Testing Creatives', 'Pixel & Analytics Setup'];
+const UiUxContent: React.FC = () => {
+  const features = ['User Research & Personas', 'Wireframing & Prototyping', 'High-Fidelity UI Design', 'Design System Creation', 'Usability Testing'];
 
   return (
     <div className="grid md:grid-cols-2 gap-16 items-center">
        <div>
-          <h2 className="text-3xl font-bold text-white mb-6">Why Choose Our {AdsMeta.title}?</h2>
+          <h2 className="text-3xl font-bold text-white mb-6">Why Choose Our {UiUxMeta.title}?</h2>
           <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-            Stop burning money. We use data-driven targeting and psychological hooks to ensure every Rupiah spent brings value. We focus on ROAS (Return on Ad Spend), not just clicks.
+            We design interfaces that are not just beautiful but psychologically optimized to reduce friction, increase trust, and boost conversion rates. We ensure your users love using your product.
           </p>
           <ul className="space-y-4">
              {features.map((feature, idx) => (
@@ -28,23 +28,23 @@ const AdsContent: React.FC = () => {
           </ul>
           <div className="mt-10">
              <Button 
-               href={getWhatsAppUrl(WA_MESSAGES.ADS)}
+               href={getWhatsAppUrl(WA_MESSAGES.UI_UX)}
                target="_blank"
                rel="noreferrer"
                variant="primary"
                trackName="InitiateCheckout"
-               trackParams={{ location: 'ServiceDetail', service: AdsMeta.title }}
+               trackParams={{ location: 'ServiceDetail', service: UiUxMeta.title }}
              >
-                Start Campaign <ArrowRight size={20} className="ml-2" />
+                Design My Project <ArrowRight size={20} className="ml-2" />
              </Button>
           </div>
        </div>
        <div className="bg-slate-900 border border-slate-800 rounded-3xl h-96 flex items-center justify-center shadow-xl relative overflow-hidden group">
-          <div className="absolute inset-0 bg-purple-600/5 group-hover:bg-purple-600/10 transition-colors"></div>
-          <span className="text-slate-500 text-lg font-medium">Ad Performance Dashboard</span>
+          <div className="absolute inset-0 bg-indigo-600/5 group-hover:bg-indigo-600/10 transition-colors"></div>
+          <span className="text-slate-500 text-lg font-medium">Interactive Prototype</span>
        </div>
     </div>
   );
 };
 
-export default AdsContent;
+export default UiUxContent;

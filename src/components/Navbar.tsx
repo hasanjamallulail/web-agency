@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import Button from './ui/Button';
 import { trackEvent } from '../utils/analytics';
-import { getWhatsAppUrl } from '../constants';
+import { getWhatsAppUrl } from '@/constants';
+
 import { NavigationService } from '../services/Repository';
 
 const Navbar: React.FC = () => {

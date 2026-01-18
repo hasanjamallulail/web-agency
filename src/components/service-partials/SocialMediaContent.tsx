@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
-import { getWhatsAppUrl, WA_MESSAGES } from '../../constants';
+import { getWhatsAppUrl, WA_MESSAGES } from '../../../constants';
 
 export const SocialMediaMeta = {
   title: 'Social Media Management',

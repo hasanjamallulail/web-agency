@@ -1,13 +1,14 @@
-import React from 'react';
-
-// --- Core Interfaces ---
+import { ReactNode } from 'react';
 
 export interface IService {
-  id: string;
+  id: number;
   title: string;
-  description: string;
-  icon?: React.ReactNode; // Optional because icon might be handled by a mapper
-  link?: string;
+  slug: string;        // Kunci utama URL
+  description: string; // Deskripsi singkat
+  content: string;     // Konten lengkap untuk halaman detail
+  features?: string[]; // List fitur (opsional)
+  icon?: ReactNode;    // Icon
+  image?: string;      // Gambar banner (opsional)
 }
 
 export interface IClient {

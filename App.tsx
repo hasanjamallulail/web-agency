@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import ServiceDetail from './pages/ServiceDetail';
-import Projects from './pages/Projects';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import FAQ from './pages/FAQ';
-import Privacy from './pages/Privacy';
-import Sitemap from './pages/Sitemap';
-import { initAnalytics } from './utils/analytics';
+
+// Import Layout & Pages
+import Layout from './src/components/Layout';
+import Home from './src/pages/Home';
+import Services from './src/pages/Services';
+
+// ✅ PERBAIKAN: Arahkan ke file Page, BUKAN ke ServiceCard
+import ServiceDetail from './src/pages/ServiceDetail'; 
+
+import Projects from './src/pages/Projects';
+import About from './src/pages/About';
+import Contact from './src/pages/Contact';
+import FAQ from './src/pages/FAQ';
+import Privacy from './src/pages/Privacy';
+import Sitemap from './src/pages/Sitemap';
+import { initAnalytics } from './src/utils/analytics';
+
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -50,6 +56,7 @@ const App: React.FC = () => {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/sitemap" element={<Sitemap />} />
+          
         </Route>
       </Routes>
     </Router>

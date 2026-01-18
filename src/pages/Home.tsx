@@ -50,7 +50,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Seo 
-        title="Growth Agency & UI/UX Expert"
+        title="Growth Agency"
         description="Wargrowth Agency helps brands scale with NLP-based marketing, SEO, Ads, and Psychology-driven UI/UX Design. Based in Jakarta."
         schema={homeSchema}
       />
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
       <ServicesSection />
       {/* Testimonials kept on Home for social proof, but link removed from Nav */}
       <TestimonialsSection />
-      <FoundersSlider darkBg={true} />
+      {/* <FoundersSlider darkBg={true} /> */}
       {/* Reusable Portfolio Section in Slider Mode */}
       <PortfolioSection 
          mode="slider" 

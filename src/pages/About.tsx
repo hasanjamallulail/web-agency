@@ -8,6 +8,7 @@ import { SiGoogleads, SiGoogleanalytics, SiMeta, SiReact, SiNodedotjs, SiFigma, 
 import Section from '../components/ui/Section';
 import FoundersSlider from '../components/sections/FoundersSlider';
 import Seo from '../components/Seo';
+import CtaSection from '../components/sections/CtaSection';
 
 const About: React.FC = () => {
   
@@ -123,28 +124,7 @@ const About: React.FC = () => {
       <FoundersSlider darkBg={true} />
 
       {/* 5. CTA SECTION */}
-      <Section className="bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center text-white px-4 py-10">
-          <h2 className="text-3xl font-bold mb-6">Ready to scale with clarity?</h2>
-          <p className="text-blue-100 mb-8 text-lg">
-            Stop guessing. Start growing with data-driven psychology strategies.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              to="/contact" 
-              className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-slate-100 transition shadow-lg"
-            >
-              Start Consultation
-            </Link>
-            <Link 
-              to="/projects" 
-              className="bg-blue-700 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-800 transition border border-blue-500"
-            >
-              See Our Work
-            </Link>
-          </div>
-        </div>
-      </Section>
+      <CtaSection />
     </>
   );
 };

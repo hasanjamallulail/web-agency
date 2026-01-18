@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
-import { getWhatsAppUrl } from '../../constants';
+import { getWhatsAppUrl } from '@/constants';
 
 const Hero: React.FC = () => {
   return (

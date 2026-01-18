@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '../ui/Section';
 import Button from '../ui/Button';
-import { getWhatsAppUrl } from '../../constants';
+import { getWhatsAppUrl } from '@/constants';
 
 const CtaSection: React.FC = () => {
   return (

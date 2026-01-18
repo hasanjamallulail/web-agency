@@ -7,13 +7,13 @@ import { navigationData } from '../data/navigationData';
 
 /**
  * Generic Base Repository
- * Implements basic Read operations for any data type T
+ * Menyediakan fungsi dasar untuk semua jenis data
  */
 abstract class BaseRepository<T> {
   protected data: T[];
 
   constructor(data: T[]) {
-    this.data = data;
+    this.data = data || []; // Proteksi jika data import kosong
   }
 
   public getAll(): T[] {
@@ -27,7 +27,6 @@ abstract class BaseRepository<T> {
 
 /**
  * Portfolio Repository
- * Handles logic specific to Projects (Filtering Featured, etc)
  */
 class PortfolioRepository extends BaseRepository<IProject> {
   public getFeatured(): IProject[] {
@@ -35,15 +34,15 @@ class PortfolioRepository extends BaseRepository<IProject> {
   }
 
   public getByCategory(category: string): IProject[] {
-    if (category === 'All') return this.data;
-    // Flexible matching: if project has "Ads & SEO", searching "Ads" will find it
-    return this.data.filter(project => project.category.includes(category) || category.includes(project.category));
+    if (!category || category === 'All') return this.data;
+    // Pencarian Case-Insensitive agar tidak typo besar/kecil
+    return this.data.filter(project => 
+      project.category.toLowerCase().includes(category.toLowerCase())
+    );
   }
 
-  // OOP: Extract unique categories dynamically from the dataset
   public getUniqueCategories(): string[] {
     const rawCategories = this.data.map(p => p.category);
-    // Use Set to remove duplicates, then convert back to array
     const unique = Array.from(new Set(rawCategories));
     return ['All', ...unique];
   }
@@ -51,10 +50,17 @@ class PortfolioRepository extends BaseRepository<IProject> {
 
 /**
  * Service Repository
- * Handles logic for Services
+ * Kunci utama untuk navigasi detail layanan
  */
 class ServiceRepository extends BaseRepository<IService> {
-  public getById(id: string): IService | undefined {
+  // ✅ Mencari berdasarkan slug untuk URL (misal: /services/seo)
+  public getBySlug(slug: string | undefined): IService | undefined {
+    if (!slug) return undefined;
+    return this.data.find(service => service.slug.toLowerCase() === slug.toLowerCase());
+  }
+
+  // ✅ Mencari berdasarkan ID (pastikan tipe data di types.ts adalah number)
+  public getById(id: number): IService | undefined {
     return this.data.find(service => service.id === id);
   }
 }
@@ -63,26 +69,19 @@ class ServiceRepository extends BaseRepository<IService> {
  * Testimonial Repository
  */
 class TestimonialRepository extends BaseRepository<ITestimonial> {
-  // Add methods like getRandom() or getTop(n) here if needed
   public getLatest(n: number): ITestimonial[] {
     return this.data.slice(0, n);
   }
 }
 
 /**
- * Founder Repository
+ * Founder & Navigation Repositories
  */
 class FounderRepository extends BaseRepository<IFounder> {}
-
-/**
- * Navigation Repository
- */
-class NavigationRepository extends BaseRepository<NavItem> {
-    // Methods specific to nav if needed, e.g., getFooterLinks()
-}
+class NavigationRepository extends BaseRepository<NavItem> {}
 
 // --- Singleton Export ---
-// We export instances so the whole app uses the same service layer
+// Memastikan seluruh aplikasi menggunakan instance data yang sama
 export const PortfolioService = new PortfolioRepository(portfolioData);
 export const ServiceService = new ServiceRepository(servicesData);
 export const TestimonialService = new TestimonialRepository(testimonialsData);

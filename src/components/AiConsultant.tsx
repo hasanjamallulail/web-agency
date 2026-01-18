@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
 import { MessageCircle, X, Send, Bot, Loader2 } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
-import { ChatMessage } from '../types';
+import { ChatMessage } from '@/src/types';
 
 const AiConsultant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

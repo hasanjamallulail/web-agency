@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import SocialProofWidget from './SocialProofWidget';
 import AiConsultant from './AiConsultant';
+
+// Kita bungkus dalam try-catch atau optional, jaga-jaga kalau file analytics belum dibuat
 import { trackPageView } from '../utils/analytics';
 
 const Layout: React.FC = () => {

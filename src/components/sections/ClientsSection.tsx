@@ -1,6 +1,7 @@
 import React from 'react';
 import LogoTicker from '../LogoTicker';
 
+
 const ClientsSection: React.FC = () => {
   // PENTING: Ini daftar nama file persis sesuai screenshot Anda
   const clientFiles = [
