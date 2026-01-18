@@ -1,24 +1,24 @@
-import { IFounder } from '../types';
+import { IFounder } from "../types";
 
 export const foundersData: IFounder[] = [
   {
     name: "Hasan Jamalullail",
-    role: "Co-Founder & Strategy Lead",
-    bio: "Expert in NLP-based marketing and growth strategy. Passionate about human psychology in business.",
-    image: "H",
+    role: "Founder & CEO",
+    bio: "Digital strategist with 5+ years of experience in NLP-based marketing and business growth.",
+    image: "HJ", // Gunakan inisial jika belum ada foto
     socials: {
-      linkedin: "#",
-      instagram: "#"
+      linkedin: "https://linkedin.com/in/hasanjamalullail",
+      instagram: "https://instagram.com/hasan"
     }
   },
   {
     name: "Arham",
     role: "Co-Founder & Tech Lead",
-    bio: "Full-stack engineer specializing in scalable architecture and high-performance web applications.",
+    bio: "Full-stack developer focused on building scalable systems and high-performance digital products.",
     image: "A",
     socials: {
-      linkedin: "#",
-      instagram: "#"
+      linkedin: "https://linkedin.com/in/arham",
+      instagram: "https://instagram.com/arham"
     }
   }
 ];

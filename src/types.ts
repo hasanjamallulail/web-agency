@@ -32,15 +32,15 @@ export interface ITestimonial {
   image?: string;
 }
 
+
 export interface IFounder {
   name: string;
   role: string;
   bio: string;
-  image: string; // Initials or URL
+  image: string; // Bisa berupa inisial "HJ" atau URL foto
   socials: {
     linkedin?: string;
     instagram?: string;
-    twitter?: string;
   };
 }
 

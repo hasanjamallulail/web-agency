@@ -7,13 +7,14 @@ import { navigationData } from '../data/navigationData';
 
 /**
  * Generic Base Repository
- * Menyediakan fungsi dasar untuk semua jenis data
+ * Menggunakan Generic <T> agar bisa digunakan untuk data apa pun
  */
 abstract class BaseRepository<T> {
   protected data: T[];
 
   constructor(data: T[]) {
-    this.data = data || []; // Proteksi jika data import kosong
+    // Pastikan data selalu berupa array untuk menghindari error .map() atau .filter()
+    this.data = data || []; 
   }
 
   public getAll(): T[] {
@@ -35,7 +36,6 @@ class PortfolioRepository extends BaseRepository<IProject> {
 
   public getByCategory(category: string): IProject[] {
     if (!category || category === 'All') return this.data;
-    // Pencarian Case-Insensitive agar tidak typo besar/kecil
     return this.data.filter(project => 
       project.category.toLowerCase().includes(category.toLowerCase())
     );
@@ -50,16 +50,15 @@ class PortfolioRepository extends BaseRepository<IProject> {
 
 /**
  * Service Repository
- * Kunci utama untuk navigasi detail layanan
  */
 class ServiceRepository extends BaseRepository<IService> {
-  // ✅ Mencari berdasarkan slug untuk URL (misal: /services/seo)
   public getBySlug(slug: string | undefined): IService | undefined {
     if (!slug) return undefined;
-    return this.data.find(service => service.slug.toLowerCase() === slug.toLowerCase());
+    return this.data.find(service => 
+      service.slug.toLowerCase() === slug.toLowerCase()
+    );
   }
 
-  // ✅ Mencari berdasarkan ID (pastikan tipe data di types.ts adalah number)
   public getById(id: number): IService | undefined {
     return this.data.find(service => service.id === id);
   }
@@ -75,13 +74,22 @@ class TestimonialRepository extends BaseRepository<ITestimonial> {
 }
 
 /**
- * Founder & Navigation Repositories
+ * Founder Repository
  */
-class FounderRepository extends BaseRepository<IFounder> {}
+class FounderRepository extends BaseRepository<IFounder> {
+  // Tambahan: Mencari founder berdasarkan inisial atau nama
+  public getByName(name: string): IFounder | undefined {
+    return this.data.find(f => f.name.toLowerCase().includes(name.toLowerCase()));
+  }
+}
+
+/**
+ * Navigation Repository
+ */
 class NavigationRepository extends BaseRepository<NavItem> {}
 
 // --- Singleton Export ---
-// Memastikan seluruh aplikasi menggunakan instance data yang sama
+// Memastikan seluruh aplikasi menggunakan instance yang sama (Single Source of Truth)
 export const PortfolioService = new PortfolioRepository(portfolioData);
 export const ServiceService = new ServiceRepository(servicesData);
 export const TestimonialService = new TestimonialRepository(testimonialsData);
